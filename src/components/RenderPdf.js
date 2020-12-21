@@ -22,6 +22,7 @@ const RenderPdf = ({
     watermark,
     alert,
     canvasCss,
+    handlePageOnArrowHotkeyClick,
 }) => {
     const [error, setError] = useState({ status: false, message: '' })
     const canvasRef = useRef(null)
@@ -285,6 +286,25 @@ const RenderPdf = ({
         scrollThumbnail()
     })
 
+    const handleArrowHotkeys = (e) => {
+        let direction = '';
+        if (e.keyCode === 37) {
+            direction = 'prev';
+        } else if (e.keyCode === 39) {
+            direction = 'next';
+        }
+
+        return direction;
+    }
+
+    useEffect(() => {
+        document.addEventListener("keydown", handleArrowHotkeys);
+
+        return () => {
+            document.removeEventListener("keydown", handleArrowHotkeys);
+          };
+    }, []);
+
     if (error.status) {
         pageCount(-1)
         return (
@@ -398,6 +418,7 @@ RenderPdf.propTypes = {
         color: PropTypes.string,
     }),
     canvasCss: PropTypes.string,
+    handlePageOnArrowHotkeyClick: PropTypes.func,
 }
 
 RenderPdf.defaultProps = {
