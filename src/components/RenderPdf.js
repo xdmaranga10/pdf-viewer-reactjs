@@ -300,11 +300,12 @@ const RenderPdf = ({
     }
 
     useEffect(() => {
+        console.log("asdasdsa");
         document.addEventListener("keydown", handleArrowHotkeys);
 
         return () => {
             document.removeEventListener("keydown", handleArrowHotkeys);
-          };
+        };
     }, []);
 
     if (error.status) {
