@@ -165,8 +165,7 @@ class PDFViewer extends React.Component {
                 this.props.onPrevBtnClick(this.state.page - 1)
             }
         } else if (e.keyCode === 39) {
-            console.log(this.state.page, this.pages)
-            if (this.state.page === this.pages) return
+            if (this.state.page === this.state.pages) return
 
             this.setState({
                 page: this.state.page + 1,
