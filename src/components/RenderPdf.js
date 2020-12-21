@@ -221,13 +221,11 @@ const RenderPdf = ({
                             pageNum === pageNo
                                 ? {
                                       height,
-                                      width: 'calc(16.67% - 15px)',
+                                      width: 'calc(16.67% - 30px)',
                                       display: 'flex',
                                       cursor: 'pointer',
                                       margin: '10px 15px',
                                       border: '5px solid red',
-                                      boxShadow:
-                                          'rgba(0, 0, 0, 0.6) 0 4px 8px 0, rgba(0, 0, 0, 0.58) 0 6px 20px 0',
                                   }
                                 : {
                                       height,
@@ -235,8 +233,6 @@ const RenderPdf = ({
                                       display: 'flex',
                                       cursor: 'pointer',
                                       margin: '10px 15px',
-                                      boxShadow:
-                                          'rgba(0, 0, 0, 0.6) 0px 2px 2px 0px',
                                   }
                         }
                         onClick={() => changePage(pageNo)}
