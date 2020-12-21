@@ -221,7 +221,7 @@ const RenderPdf = ({
                             pageNum === pageNo
                                 ? {
                                       height: 'auto',
-                                      width: 'calc(16.67% - 30px)',
+                                      width: 'calc(16.67% - 30px) !important',
                                       display: 'flex',
                                       cursor: 'pointer',
                                       margin: '10px 15px',
@@ -229,7 +229,7 @@ const RenderPdf = ({
                                   }
                                 : {
                                       height: 'auto',
-                                      width: 'calc(16.67% - 30px)',
+                                      width: 'calc(16.67% - 30px) !important',
                                       display: 'flex',
                                       cursor: 'pointer',
                                       margin: '10px 15px',
