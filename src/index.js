@@ -33,6 +33,7 @@ class PDFViewer extends React.Component {
         this.handleRotateRight = this.handleRotateRight.bind(this)
         this.handleArrowHotkeys = this.handleArrowHotkeys.bind(this)
 
+        console.log("here")
         window.addEventListener('keydown', this.handleArrowHotkeys)
     }
 
