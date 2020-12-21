@@ -171,6 +171,10 @@ class PDFViewer extends React.Component {
         }
     }
 
+    componentDidMount() {
+        console.log('mounted')
+    }
+
     render() {
         const {
             document,
