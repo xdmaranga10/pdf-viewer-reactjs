@@ -22,7 +22,6 @@ const RenderPdf = ({
     watermark,
     alert,
     canvasCss,
-    handlePageOnArrowHotkeyClick,
 }) => {
     const [error, setError] = useState({ status: false, message: '' })
     const canvasRef = useRef(null)
@@ -270,7 +269,6 @@ const RenderPdf = ({
     }
 
     useEffect(() => {
-        console.log('bbbbbb')
         fetchPDF()
     }, [document, password])
 
@@ -286,28 +284,6 @@ const RenderPdf = ({
     useEffect(() => {
         scrollThumbnail()
     })
-
-    const handleArrowHotkeys = e => {
-        console.log('here')
-        let direction = ''
-        if (e.keyCode === 37) {
-            direction = 'prev'
-        } else if (e.keyCode === 39) {
-            direction = 'next'
-        }
-
-        console.log(direction)
-        handlePageOnArrowHotkeyClick(direction)
-    }
-
-    useEffect(() => {
-        console.log('asdasdsa')
-        document.addEventListener('keydown', handleArrowHotkeys)
-
-        return () => {
-            document.removeEventListener('keydown', handleArrowHotkeys)
-        }
-    }, [])
 
     if (error.status) {
         pageCount(-1)
@@ -422,7 +398,6 @@ RenderPdf.propTypes = {
         color: PropTypes.string,
     }),
     canvasCss: PropTypes.string,
-    handlePageOnArrowHotkeyClick: PropTypes.func,
 }
 
 RenderPdf.defaultProps = {
