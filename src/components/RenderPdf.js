@@ -213,8 +213,8 @@ const RenderPdf = ({
 
             for (let pageNo = 1; pageNo <= images.length; pageNo++) {
                 let image = images[pageNo - 1].image
-                let height = images[pageNo - 1].height
-                let width = images[pageNo - 1].width
+                let height = "height: 'auto'";
+                let width = "width: 'calc(16.67% - 30px)'";
                 thumbnailList.push(
                     <img
                         style={
