@@ -155,7 +155,7 @@ class PDFViewer extends React.Component {
 
     handleArrowHotkeys(event) {
         console.log("pressed");
-        if(event.keyCode === 39) {
+        if (event.keyCode === 39) {
             console.log("next pressed");
             if (this.state.page === this.pages) return
 
@@ -163,7 +163,7 @@ class PDFViewer extends React.Component {
                 page: this.state.page + 1,
             })
         } else if (event.keyCode === 37) {
-            console.log("next pressed");
+            console.log("prev pressed");
             if (this.state.page === 1) return
 
             this.setState({
@@ -174,15 +174,16 @@ class PDFViewer extends React.Component {
     
     componentDidMount() {
         console.log("mounted");
-        document.addEventListener("keydown", this.handleArrowHotkeys, false);
+        document.addEventListener("keydown", this.handleArrowHotkeys());
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         console.log("unmounted");
-        document.removeEventListener("keydown", this.handleArrowHotkeys, false);
+        document.removeEventListener("keydown", this.handleArrowHotkeys());
     }
 
     render() {
+        console.log("test");
         const {
             document,
             withCredentials,
