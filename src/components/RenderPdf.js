@@ -221,11 +221,11 @@ const RenderPdf = ({
                             pageNum === pageNo
                                 ? {
                                       height,
-                                      width,
+                                      width: 'calc(16.67% - 15px)',
                                       display: 'flex',
                                       cursor: 'pointer',
-                                      margin: '10px 20px',
-                                      border: '5px solid rgba(58, 58, 64, 1)',
+                                      margin: '10px 15px',
+                                      border: '5px solid red',
                                       boxShadow:
                                           'rgba(0, 0, 0, 0.6) 0 4px 8px 0, rgba(0, 0, 0, 0.58) 0 6px 20px 0',
                                   }
@@ -234,7 +234,7 @@ const RenderPdf = ({
                                       width,
                                       display: 'flex',
                                       cursor: 'pointer',
-                                      margin: '15px 25px',
+                                      margin: '10px 15px',
                                       boxShadow:
                                           'rgba(0, 0, 0, 0.6) 0px 2px 2px 0px',
                                   }
