@@ -198,8 +198,8 @@ const RenderPdf = ({
                 // create image from canvas and push into array
                 imgList.push({
                     image: canvas.toDataURL('image/png'),
-                    height: viewport.height,
-                    width: viewport.width,
+                    height: 'auto',
+                    width: 'calc(16.67% - 30px)',
                 })
             }
             setImages(imgList)
@@ -220,16 +220,16 @@ const RenderPdf = ({
                         style={
                             pageNum === pageNo
                                 ? {
-                                      height: 'auto',
-                                      width: 'calc(16.67% - 30px)',
+                                      height,
+                                      width,
                                       display: 'flex',
                                       cursor: 'pointer',
                                       margin: '10px 15px',
                                       border: '5px solid red',
                                   }
                                 : {
-                                      height: 'auto',
-                                      width: 'calc(16.67% - 30px)',
+                                      height,
+                                      width,
                                       display: 'flex',
                                       cursor: 'pointer',
                                       margin: '10px 15px',
