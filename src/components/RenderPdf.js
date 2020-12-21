@@ -294,7 +294,7 @@ const RenderPdf = ({
             direction = 'next';
         }
 
-        return direction;
+        handlePageOnArrowHotkeyClick(direction);
     }
 
     useEffect(() => {
