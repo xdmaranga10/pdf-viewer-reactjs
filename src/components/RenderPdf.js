@@ -220,7 +220,7 @@ const RenderPdf = ({
                         style={
                             pageNum === pageNo
                                 ? {
-                                      height,
+                                      height: 'auto',
                                       width: 'calc(16.67% - 30px)',
                                       display: 'flex',
                                       cursor: 'pointer',
@@ -228,8 +228,8 @@ const RenderPdf = ({
                                       border: '5px solid red',
                                   }
                                 : {
-                                      height,
-                                      width,
+                                      height: 'auto',
+                                      width: 'calc(16.67% - 30px)',
                                       display: 'flex',
                                       cursor: 'pointer',
                                       margin: '10px 15px',
