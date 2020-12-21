@@ -33,7 +33,7 @@ class PDFViewer extends React.Component {
         this.handleRotateRight = this.handleRotateRight.bind(this)
         this.handleArrowHotkeys = this.handleArrowHotkeys.bind(this)
 
-        window.addEventListener('keydown', this.handleArrowHotkeys);
+        window.addEventListener('keydown', this.handleArrowHotkeys)
     }
 
     getPageCount(pages) {
@@ -156,14 +156,6 @@ class PDFViewer extends React.Component {
     }
 
     handleArrowHotkeys(e) {
-        if (e.keyCode === 39) {
-            if (this.state.page === this.pages) return
-
-            this.setState({
-                page: this.state.page + 1,
-            })
-        }
-
         if (e.keyCode === 37) {
             if (this.state.page === 1) return
 
@@ -171,6 +163,22 @@ class PDFViewer extends React.Component {
                 page: this.state.page - 1,
             })
         };
+
+        if (e.keyCode === 39) {
+            if (this.state.page === this.pages) return
+
+            this.setState({
+                page: this.state.page + 1,
+            })
+        }
+    }
+
+    componentDidMount() {
+        console.log('mounted');
+    }
+
+    componentWillUnmount() {
+        console.log('unmounted');
     }
 
     render() {
