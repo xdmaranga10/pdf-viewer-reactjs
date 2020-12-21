@@ -270,6 +270,7 @@ const RenderPdf = ({
     }
 
     useEffect(() => {
+        console.log("bbbbbb");
         fetchPDF()
     }, [document, password])
 
