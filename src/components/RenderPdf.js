@@ -270,7 +270,7 @@ const RenderPdf = ({
     }
 
     useEffect(() => {
-        console.log("bbbbbb");
+        console.log('bbbbbb')
         fetchPDF()
     }, [document, password])
 
@@ -287,27 +287,27 @@ const RenderPdf = ({
         scrollThumbnail()
     })
 
-    const handleArrowHotkeys = (e) => {
-        console.log("here");
-        let direction = '';
+    const handleArrowHotkeys = e => {
+        console.log('here')
+        let direction = ''
         if (e.keyCode === 37) {
-            direction = 'prev';
+            direction = 'prev'
         } else if (e.keyCode === 39) {
-            direction = 'next';
+            direction = 'next'
         }
 
-        console.log(direction);
-        handlePageOnArrowHotkeyClick(direction);
+        console.log(direction)
+        handlePageOnArrowHotkeyClick(direction)
     }
 
     useEffect(() => {
-        console.log("asdasdsa");
-        document.addEventListener("keydown", handleArrowHotkeys);
+        console.log('asdasdsa')
+        document.addEventListener('keydown', handleArrowHotkeys)
 
         return () => {
-            document.removeEventListener("keydown", handleArrowHotkeys);
-        };
-    }, []);
+            document.removeEventListener('keydown', handleArrowHotkeys)
+        }
+    }, [])
 
     if (error.status) {
         pageCount(-1)

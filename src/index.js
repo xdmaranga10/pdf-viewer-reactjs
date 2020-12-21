@@ -154,15 +154,15 @@ class PDFViewer extends React.Component {
     }
 
     handlePageOnArrowHotkeyClick(direction) {
-        if (direction === "prev") {
+        if (direction === 'prev') {
             if (this.state.page === 1) return
 
             this.setState({
                 page: this.state.page - 1,
             })
-        };
+        }
 
-        if (direction === "next") {
+        if (direction === 'next') {
             if (this.state.page === this.pages) return
 
             this.setState({
