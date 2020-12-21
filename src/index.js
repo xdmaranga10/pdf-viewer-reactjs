@@ -152,6 +152,30 @@ class PDFViewer extends React.Component {
         }
     }
 
+    handleArrowHotkeys(event) {
+        if(event.keyCode === 39) {
+            if (this.state.page === this.pages) return
+
+            this.setState({
+                page: this.state.page + 1,
+            })
+        } else if (event.keyCode === 37) {
+            if (this.state.page === 1) return
+
+            this.setState({
+                page: this.state.page - 1,
+            })
+        }
+    }
+    
+    componentDidMount() {
+        document.addEventListener("keydown", this.handleArrowHotkeys, false);
+    }
+
+    componentWillUnmount(){
+        document.removeEventListener("keydown", this.handleArrowHotkeys, false);
+    }
+
     render() {
         const {
             document,
