@@ -153,17 +153,14 @@ class PDFViewer extends React.Component {
         }
     }
 
-    handleArrowHotkeys(event) {
-        console.log("pressed");
-        if (event.keyCode === 39) {
-            console.log("next pressed");
+    handleArrowHotkeys() {
+        if (this.props.onArrowHotkeysClick === 'next') {
             if (this.state.page === this.pages) return
 
             this.setState({
                 page: this.state.page + 1,
             })
-        } else if (event.keyCode === 37) {
-            console.log("prev pressed");
+        } else if (this.props.onArrowHotkeysClick === 'prev') {
             if (this.state.page === 1) return
 
             this.setState({
@@ -172,22 +169,7 @@ class PDFViewer extends React.Component {
         }
     }
 
-    componentWillMount() {
-        console.log("you are going to be mounted");
-    }
-    
-    componentDidMount() {
-        console.log("mounted");
-        document.addEventListener("keydown", this.handleArrowHotkeys());
-    }
-
-    componentWillUnmount() {
-        console.log("unmounted");
-        document.removeEventListener("keydown", this.handleArrowHotkeys());
-    }
-
     render() {
-        console.log("test");
         const {
             document,
             withCredentials,
@@ -332,6 +314,7 @@ PDFViewer.propTypes = {
     onDocumentClick: PropTypes.func,
     onPrevBtnClick: PropTypes.func,
     onNextBtnClick: PropTypes.func,
+    onArrowHotkeysClick: PropTypes.func,
     onZoom: PropTypes.func,
     onRotation: PropTypes.func,
     getMaxPageCount: PropTypes.func,
