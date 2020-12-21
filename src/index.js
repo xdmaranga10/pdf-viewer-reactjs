@@ -31,6 +31,7 @@ class PDFViewer extends React.Component {
         this.handleRotateLeft = this.handleRotateLeft.bind(this)
         this.handleResetRotation = this.handleResetRotation.bind(this)
         this.handleRotateRight = this.handleRotateRight.bind(this)
+        this.handleHotkeysPressed = this.handleHotkeysPressed.bind(this);
     }
 
     getPageCount(pages) {
@@ -152,8 +153,36 @@ class PDFViewer extends React.Component {
         }
     }
 
-    componentDidMount() {
-        console.log('mounted')
+    handleHotkeysPressed(e) {
+        if (e.keyCode === 37) {
+            if (this.state.page === 1) return
+
+            this.setState({
+                page: this.state.page - 1,
+            })
+
+            if (this.props.onPrevBtnClick) {
+                this.props.onPrevBtnClick(this.state.page - 1)
+            }
+        } else if (e.keyCode === 39) {
+            if (this.state.page === this.pages) return
+
+            this.setState({
+                page: this.state.page + 1,
+            })
+    
+            if (this.props.onNextBtnClick) {
+                this.props.onNextBtnClick(this.state.page + 1)
+            }
+        }
+    }
+
+    componentDidMount(){
+        document.addEventListener("keydown", this.handleHotkeysPressed);
+    }
+
+    componentWillUnmount(){
+        document.removeEventListener("keydown", this.handleHotkeysPressed);
     }
 
     render() {
