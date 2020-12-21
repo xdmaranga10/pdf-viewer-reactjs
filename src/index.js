@@ -31,6 +31,7 @@ class PDFViewer extends React.Component {
         this.handleRotateLeft = this.handleRotateLeft.bind(this)
         this.handleResetRotation = this.handleResetRotation.bind(this)
         this.handleRotateRight = this.handleRotateRight.bind(this)
+        this.handleArrowHotkeys = this.handleArrowHotkeys.bind(this);
     }
 
     getPageCount(pages) {
@@ -154,14 +155,12 @@ class PDFViewer extends React.Component {
 
     handleArrowHotkeys(event) {
         if(event.keyCode === 39) {
-            console.log("arrow right pressed");
             if (this.state.page === this.pages) return
 
             this.setState({
                 page: this.state.page + 1,
             })
         } else if (event.keyCode === 37) {
-            console.log("arrow left pressed");
             if (this.state.page === 1) return
 
             this.setState({
