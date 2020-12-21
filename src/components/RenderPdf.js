@@ -287,6 +287,7 @@ const RenderPdf = ({
     })
 
     const handleArrowHotkeys = (e) => {
+        console.log("here");
         let direction = '';
         if (e.keyCode === 37) {
             direction = 'prev';
@@ -294,6 +295,7 @@ const RenderPdf = ({
             direction = 'next';
         }
 
+        console.log(direction);
         handlePageOnArrowHotkeyClick(direction);
     }
 
