@@ -10,8 +10,6 @@ import RotateLeft from './navigationComponents/RotateLeft'
 import ResetRotation from './navigationComponents/ResetRotation'
 import RotateRight from './navigationComponents/RotateRight'
 import Modal from 'react-modal'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTh } from '@fortawesome/free-solid-svg-icons'
 
 const Navigation = ({
     page,
@@ -51,7 +49,7 @@ const Navigation = ({
             {hideZoom ? (
                 <div className='column is-2'>
                     <button type='button'>
-                        <FontAwesomeIcon icon={faTh} onClick={openModal} />
+                        <i className='material-icons'>grid_on</i>
                     </button>
 
                     <Modal isOpen={modalIsOpen}>
