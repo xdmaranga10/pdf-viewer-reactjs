@@ -69,7 +69,6 @@ const RenderPdf = ({
         try {
             const page = await pdf.getPage(pageNum)
             const viewport = page.getViewport({ scale, rotation })
-            console.log('page', page, 'pdf', pdf, 'viewport', viewport)
             // Prepare canvas using PDF page dimensions
             const canvas = canvasRef.current
             canvas.height = viewport.height
