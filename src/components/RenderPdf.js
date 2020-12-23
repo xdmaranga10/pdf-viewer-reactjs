@@ -247,7 +247,11 @@ const RenderPdf = ({
                     />
                 )
 
-                parentThumbnailList.push(image)
+                parentThumbnailList.push({
+                    image,
+                    isSelected: pageNum === pageNo,
+                    onClick: () => changePage(pageNo),
+                })
             }
             // insert space at the end of all pages
             thumbnailList.push(
