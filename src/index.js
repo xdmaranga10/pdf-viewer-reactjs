@@ -20,6 +20,7 @@ class PDFViewer extends React.Component {
             defaultScale: this.props.scale,
             rotationAngle: this.props.rotationAngle,
             isReady: false,
+            thumbnails: [],
         }
         this.getPageCount = this.getPageCount.bind(this)
         this.handleThumbnailClick = this.handleThumbnailClick.bind(this)
@@ -32,6 +33,7 @@ class PDFViewer extends React.Component {
         this.handleResetRotation = this.handleResetRotation.bind(this)
         this.handleRotateRight = this.handleRotateRight.bind(this)
         this.handleHotkeysPressed = this.handleHotkeysPressed.bind(this)
+        this.setThumbnails = this.setThumbnails.bind(this)
     }
 
     getPageCount(pages) {
@@ -177,6 +179,10 @@ class PDFViewer extends React.Component {
         }
     }
 
+    setThumbnails(thumbnails) {
+        this.setState({ thumbnails })
+    }
+
     componentDidMount() {
         document.addEventListener('keydown', this.handleHotkeysPressed)
     }
@@ -226,6 +232,7 @@ class PDFViewer extends React.Component {
                 watermark={watermark}
                 alert={alert}
                 canvasCss={canvasCss}
+                setThumbnails={this.setThumbnails}
             />
         )
 
@@ -253,6 +260,7 @@ class PDFViewer extends React.Component {
                         handleRotateLeft={this.handleRotateLeft}
                         handleResetRotation={this.handleResetRotation}
                         handleRotateRight={this.handleRotateRight}
+                        thumbnails={this.state.thumbnails}
                     />
                 ) : (
                     <NavigationElement

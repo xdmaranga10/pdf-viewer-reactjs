@@ -9,6 +9,9 @@ import ResetZoom from './navigationComponents/ResetZoom'
 import RotateLeft from './navigationComponents/RotateLeft'
 import ResetRotation from './navigationComponents/ResetRotation'
 import RotateRight from './navigationComponents/RotateRight'
+import Modal from 'react-modal'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTh } from '@fortawesome/free-solid-svg-icons'
 
 const Navigation = ({
     page,
@@ -29,13 +32,35 @@ const Navigation = ({
     handleRotateLeft,
     handleResetRotation,
     handleRotateRight,
+    thumbnails,
 }) => {
+    const [modalIsOpen, setIsOpen] = useState(false)
+
+    const openModal = () => {
+        setIsOpen(true)
+    }
+
+    const closeModal = () => {
+        setIsOpen(false)
+    }
+
     return (
         <div
             className={`columns is-gapless ${css.navbarWrapper ||
                 'box is-mobile has-text-white has-background-black has-margin-top-15 has-margin-bottom-15'}`}>
             {hideZoom ? (
-                <div className='column is-2'></div>
+                <div className='column is-2'>
+                    <button type='button'>
+                        <FontAwesomeIcon icon={faTh} onClick={openModal} />
+                    </button>
+
+                    <Modal isOpen={modalIsOpen}>
+                        <button type='button' onClick={closeModal}>
+                            Close
+                        </button>
+                        <div>{thumbnails}</div>
+                    </Modal>
+                </div>
             ) : (
                 <div className='column is-2 buttons are-small has-addons'>
                     <ZoomOut
@@ -145,6 +170,7 @@ Navigation.propTypes = {
     handleRotateLeft: PropTypes.func.isRequired,
     handleResetRotation: PropTypes.func.isRequired,
     handleRotateRight: PropTypes.func.isRequired,
+    thumbnails: PropTypes.array.isRequired,
 }
 
 Navigation.defaultProps = {
