@@ -259,7 +259,7 @@ const RenderPdf = ({
             )
 
             setThumbnails(thumbnailList)
-            //setParentThumbnails(parentThumbnailList)
+            setParentThumbnails(parentThumbnailList)
         }
     }
 
