@@ -295,7 +295,7 @@ class PDFViewer extends React.Component {
 
         return (
             <>
-                <Modal isOpen={modalIsOpen}>
+                <Modal isOpen={this.state.modalIsOpen}>
                     <button
                         type='button'
                         onClick={() => this.handleModalToggle(false)}>
