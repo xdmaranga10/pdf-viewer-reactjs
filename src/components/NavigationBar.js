@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import NextPageButton from './navigationComponents/NextPageButton'
 import PagesIndicator from './navigationComponents/PagesIndicator'
