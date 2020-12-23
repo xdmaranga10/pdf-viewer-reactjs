@@ -299,20 +299,56 @@ const RenderPdf = ({
 
     const modal = (
         <Modal isOpen={modalIsOpen}>
-            <button type='button' onClick={() => setModalIsOpen(false)}>
-                Close
-            </button>
-            <div>
-                {modalThumbnails.map(({ image, onClick }, index) => (
-                    <img
-                        key={index}
-                        src={image}
-                        onClick={() => {
-                            setModalIsOpen(false)
-                            onClick()
-                        }}
-                    />
-                ))}
+            <div style={{ textAlign: 'right', width: '100%' }}>
+                <button
+                    type='button'
+                    onClick={() => setModalIsOpen(false)}
+                    style={{
+                        background: 'gray',
+                        border: 'none',
+                        borderRadius: '50px',
+                        color: 'red',
+                        cursor: 'pointer',
+                        fontSize: '24px',
+                        outline: 'none',
+                        padding: '5px 10px',
+                    }}>
+                    <i className='material-icons'>close</i>
+                </button>
+            </div>
+            <div style={{ marginTop: '20px' }}>
+                {modalThumbnails.map(
+                    ({ image, onClick, isSelected }, index) => (
+                        <div
+                            key={index}
+                            style={{
+                                border: '1px solid black',
+                                display: 'inline-block',
+                                margin: '10px',
+                                width: 'calc(20% - 20px)',
+                            }}>
+                            <img
+                                src={image}
+                                onClick={() => {
+                                    setModalIsOpen(false)
+                                    onClick()
+                                }}
+                                style={
+                                    isSelected
+                                        ? {
+                                              border: '1px solid red',
+                                              display: 'block',
+                                          }
+                                        : { display: 'block' }
+                                }
+                            />
+                            <span
+                                style={{ display: 'block', marginTop: '5px' }}>
+                                {index + 1}
+                            </span>
+                        </div>
+                    )
+                )}
             </div>
         </Modal>
     )
