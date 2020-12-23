@@ -296,14 +296,14 @@ class PDFViewer extends React.Component {
 
         return (
             <>
-                {/* <Modal isOpen={this.state.modalIsOpen}>
+                <Modal isOpen={this.state.modalIsOpen}>
                     <button
                         type='button'
                         onClick={() => this.handleModalToggle(false)}>
                         Close
                     </button>
                     <div>{this.state.thumbnails}</div>
-                </Modal> */}
+                </Modal>
 
                 <div className={css ? css : 'container text-center'}>
                     <div
