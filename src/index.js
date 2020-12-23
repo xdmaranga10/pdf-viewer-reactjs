@@ -35,7 +35,7 @@ class PDFViewer extends React.Component {
         this.handleResetRotation = this.handleResetRotation.bind(this)
         this.handleRotateRight = this.handleRotateRight.bind(this)
         this.handleHotkeysPressed = this.handleHotkeysPressed.bind(this)
-        this.setThumbnails = this.setThumbnails.bind(this)
+        this.setParentThumbnails = this.setParentThumbnails.bind(this)
         this.handleModalToggle = this.handleModalToggle.bind(this)
     }
 
@@ -182,7 +182,7 @@ class PDFViewer extends React.Component {
         }
     }
 
-    setThumbnails(thumbnails) {
+    setParentThumbnails(thumbnails) {
         this.setState({ thumbnails })
     }
 
@@ -241,7 +241,9 @@ class PDFViewer extends React.Component {
                 watermark={watermark}
                 alert={alert}
                 canvasCss={canvasCss}
-                setThumbnails={thumbnails => this.setThumbnails(thumbnails)}
+                setParentThumbnails={thumbnails =>
+                    this.setParentThumbnails(thumbnails)
+                }
             />
         )
 

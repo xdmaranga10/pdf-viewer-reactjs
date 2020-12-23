@@ -22,7 +22,7 @@ const RenderPdf = ({
     watermark,
     alert,
     canvasCss,
-    setThumbnails: setParentThumbnails,
+    setParentThumbnails,
 }) => {
     const [error, setError] = useState({ status: false, message: '' })
     const canvasRef = useRef(null)
@@ -400,7 +400,7 @@ RenderPdf.propTypes = {
         color: PropTypes.string,
     }),
     canvasCss: PropTypes.string,
-    setThumbnails: PropTypes.func.isRequired,
+    setParentThumbnails: PropTypes.func.isRequired,
 }
 
 RenderPdf.defaultProps = {
