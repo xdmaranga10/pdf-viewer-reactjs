@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import NextPageButton from './navigationComponents/NextPageButton'
 import PagesIndicator from './navigationComponents/PagesIndicator'
@@ -9,7 +9,6 @@ import ResetZoom from './navigationComponents/ResetZoom'
 import RotateLeft from './navigationComponents/RotateLeft'
 import ResetRotation from './navigationComponents/ResetRotation'
 import RotateRight from './navigationComponents/RotateRight'
-import Modal from 'react-modal'
 
 const Navigation = ({
     page,
@@ -30,34 +29,19 @@ const Navigation = ({
     handleRotateLeft,
     handleResetRotation,
     handleRotateRight,
-    thumbnails,
+    handleModalToggle,
 }) => {
-    const [modalIsOpen, setIsOpen] = useState(false)
-
-    const openModal = () => {
-        setIsOpen(true)
-    }
-
-    const closeModal = () => {
-        setIsOpen(false)
-    }
-
     return (
         <div
             className={`columns is-gapless ${css.navbarWrapper ||
                 'box is-mobile has-text-white has-background-black has-margin-top-15 has-margin-bottom-15'}`}>
             {hideZoom ? (
                 <div className='column is-2'>
-                    <button type='button'>
+                    <button
+                        type='button'
+                        onClick={() => handleModalToggle(true)}>
                         <i className='material-icons'>grid_on</i>
                     </button>
-
-                    <Modal isOpen={modalIsOpen}>
-                        <button type='button' onClick={closeModal}>
-                            Close
-                        </button>
-                        <div>{thumbnails}</div>
-                    </Modal>
                 </div>
             ) : (
                 <div className='column is-2 buttons are-small has-addons'>
@@ -168,7 +152,7 @@ Navigation.propTypes = {
     handleRotateLeft: PropTypes.func.isRequired,
     handleResetRotation: PropTypes.func.isRequired,
     handleRotateRight: PropTypes.func.isRequired,
-    thumbnails: PropTypes.array.isRequired,
+    handleModalToggle: PropTypes.func.isRequired,
 }
 
 Navigation.defaultProps = {
