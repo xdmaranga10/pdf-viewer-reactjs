@@ -298,7 +298,9 @@ const RenderPdf = ({
     })
 
     const modal = (
-        <Modal isOpen={modalIsOpen}>
+        <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={() => setModalIsOpen(false)}>
             <div style={{ textAlign: 'right', width: '100%' }}>
                 <button
                     type='button'
@@ -307,13 +309,15 @@ const RenderPdf = ({
                         background: 'gray',
                         border: 'none',
                         borderRadius: '50px',
-                        color: 'red',
+                        color: 'white',
                         cursor: 'pointer',
                         fontSize: '24px',
                         outline: 'none',
-                        padding: '5px 10px',
+                        padding: '8px 8px 5px',
                     }}>
-                    <i className='material-icons'>close</i>
+                    <i className='material-icons' style={{ fontSize: '16px' }}>
+                        close
+                    </i>
                 </button>
             </div>
             <div style={{ marginTop: '20px' }}>
@@ -322,7 +326,6 @@ const RenderPdf = ({
                         <div
                             key={index}
                             style={{
-                                border: '1px solid black',
                                 display: 'inline-block',
                                 margin: '10px',
                                 width: 'calc(20% - 20px)',
@@ -337,13 +340,23 @@ const RenderPdf = ({
                                     isSelected
                                         ? {
                                               border: '1px solid red',
+                                              cursor: 'pointer',
                                               display: 'block',
                                           }
-                                        : { display: 'block' }
+                                        : {
+                                              border: '1px solid black',
+                                              cursor: 'pointer',
+                                              display: 'block',
+                                              width: '100%',
+                                          }
                                 }
                             />
                             <span
-                                style={{ display: 'block', marginTop: '5px' }}>
+                                style={{
+                                    display: 'block',
+                                    fontWeight: '700',
+                                    marginTop: '5px',
+                                }}>
                                 {index + 1}
                             </span>
                         </div>
@@ -354,7 +367,24 @@ const RenderPdf = ({
     )
 
     const viewModalButton = (
-        <button type='button' onClick={() => setModalIsOpen(true)}>
+        <button
+            type='button'
+            onClick={() => setModalIsOpen(true)}
+            style={{
+                background: 'none',
+                backgroundColor: 'white',
+                border: '1px solid white',
+                bottom: '18px',
+                color: 'black',
+                cursor: 'pointer',
+                fontSize: '14px',
+                left: '10px',
+                lineHeight: '0',
+                margin: '0 auto',
+                outline: 'none !important',
+                padding: '5px 10px',
+                position: 'absolute',
+            }}>
             <i className='material-icons'>grid_on</i>
         </button>
     )
