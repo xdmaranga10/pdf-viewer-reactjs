@@ -348,7 +348,10 @@ const RenderPdf = ({
                         }}>
                         {thumbnails}
                     </div>
-                    <canvas ref={thumbnailRef} style={{ display: 'None' }} />
+                    <canvas
+                        ref={thumbnailRef}
+                        style={{ visibility: 'hidden', position: 'absolute' }}
+                    />
                 </>
             )
         } else {
