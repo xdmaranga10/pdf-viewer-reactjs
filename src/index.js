@@ -241,7 +241,7 @@ class PDFViewer extends React.Component {
                 watermark={watermark}
                 alert={alert}
                 canvasCss={canvasCss}
-                setThumbnails={this.setThumbnails}
+                setThumbnails={thumbnails => this.setThumbnails(thumbnails)}
             />
         )
 
