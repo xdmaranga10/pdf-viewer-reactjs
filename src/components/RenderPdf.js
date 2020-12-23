@@ -4,6 +4,7 @@ import pdfjs from 'pdfjs-dist'
 import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry'
 
 import Alert from './Alert'
+import Modal from 'react-modal'
 
 pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker
 let pdf = null
@@ -22,7 +23,6 @@ const RenderPdf = ({
     watermark,
     alert,
     canvasCss,
-    setParentThumbnails,
 }) => {
     const [error, setError] = useState({ status: false, message: '' })
     const canvasRef = useRef(null)
@@ -32,6 +32,9 @@ const RenderPdf = ({
 
     const [thumbnails, setThumbnails] = useState([])
     const [images, setImages] = useState([])
+
+    const [modalThumbnails, setModalThumbnails] = useState([])
+    const [modalIsOpen, setModalIsOpen] = useState(false)
 
     const AlertComponent = alert ? alert : Alert
 
@@ -247,7 +250,7 @@ const RenderPdf = ({
                     />
                 )
 
-                parentThumbnailList.push({
+                modalThumbnails.push({
                     image,
                     isSelected: pageNum === pageNo,
                     onClick: () => changePage(pageNo),
@@ -259,6 +262,7 @@ const RenderPdf = ({
             )
 
             setThumbnails(thumbnailList)
+            setModalThumbnails(modalThumbnails)
         }
     }
 
@@ -293,9 +297,25 @@ const RenderPdf = ({
         scrollThumbnail()
     })
 
-    useEffect(() => {
-        setParentThumbnails([...thumbnails])
-    }, [thumbnails])
+    const modal = (
+        <Modal isOpen={modalIsOpen}>
+            <button type='button' onClick={() => setModalIsOpen(false)}>
+                Close
+            </button>
+            <div>
+                {modalThumbnails.map(({ image, onClick }, index) => (
+                    <img
+                        key={index}
+                        src={image}
+                        onClick={() => {
+                            setModalIsOpen(false)
+                            onClick()
+                        }}
+                    />
+                ))}
+            </div>
+        </Modal>
+    )
 
     if (error.status) {
         pageCount(-1)
@@ -317,6 +337,7 @@ const RenderPdf = ({
         if (Object.entries(showThumbnail).length !== 0) {
             return (
                 <>
+                    {modal}
                     <div
                         className={canvasCss ? canvasCss : ''}
                         style={
@@ -357,6 +378,7 @@ const RenderPdf = ({
         } else {
             return (
                 <>
+                    {modal}
                     <div
                         className={canvasCss ? canvasCss : ''}
                         style={
@@ -410,7 +432,6 @@ RenderPdf.propTypes = {
         color: PropTypes.string,
     }),
     canvasCss: PropTypes.string,
-    setParentThumbnails: PropTypes.func.isRequired,
 }
 
 RenderPdf.defaultProps = {

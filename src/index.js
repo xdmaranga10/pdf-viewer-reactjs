@@ -9,7 +9,6 @@ try {
 import PDF from './components/RenderPdf'
 import Navigation from './components/NavigationBar'
 import Loader from './components/Loader'
-import Modal from 'react-modal'
 
 class PDFViewer extends React.Component {
     constructor(props) {
@@ -21,8 +20,6 @@ class PDFViewer extends React.Component {
             defaultScale: this.props.scale,
             rotationAngle: this.props.rotationAngle,
             isReady: false,
-            thumbnails: [],
-            modalIsOpen: false,
         }
         this.getPageCount = this.getPageCount.bind(this)
         this.handleThumbnailClick = this.handleThumbnailClick.bind(this)
@@ -35,8 +32,6 @@ class PDFViewer extends React.Component {
         this.handleResetRotation = this.handleResetRotation.bind(this)
         this.handleRotateRight = this.handleRotateRight.bind(this)
         this.handleHotkeysPressed = this.handleHotkeysPressed.bind(this)
-        this.setParentThumbnails = this.setParentThumbnails.bind(this)
-        this.handleModalToggle = this.handleModalToggle.bind(this)
     }
 
     getPageCount(pages) {
@@ -182,16 +177,6 @@ class PDFViewer extends React.Component {
         }
     }
 
-    setParentThumbnails(thumbnails) {
-        this.setState({ thumbnails })
-    }
-
-    handleModalToggle(value) {
-        this.setState({
-            modalIsOpen: value,
-        })
-    }
-
     componentDidMount() {
         document.addEventListener('keydown', this.handleHotkeysPressed)
     }
@@ -241,9 +226,6 @@ class PDFViewer extends React.Component {
                 watermark={watermark}
                 alert={alert}
                 canvasCss={canvasCss}
-                setParentThumbnails={thumbnails =>
-                    this.setParentThumbnails(thumbnails)
-                }
             />
         )
 
@@ -271,7 +253,6 @@ class PDFViewer extends React.Component {
                         handleRotateLeft={this.handleRotateLeft}
                         handleResetRotation={this.handleResetRotation}
                         handleRotateRight={this.handleRotateRight}
-                        handleModalToggle={this.handleModalToggle}
                     />
                 ) : (
                     <NavigationElement
@@ -297,67 +278,41 @@ class PDFViewer extends React.Component {
         }
 
         return (
-            <>
-                {this.state.modalIsOpen && (
-                    <Modal isOpen={this.state.modalIsOpen}>
-                        <button
-                            type='button'
-                            onClick={() => this.handleModalToggle(false)}>
-                            Close
-                        </button>
-                        <div>
-                            {this.state.thumbnails.map(
-                                ({ image, onClick }, index) => (
-                                    <img
-                                        key={index}
-                                        src={image}
-                                        onClick={() => {
-                                            this.handleModalToggle(false)
-                                            onClick()
-                                        }}
-                                    />
-                                )
-                            )}
-                        </div>
-                    </Modal>
-                )}
-
-                <div className={css ? css : 'container text-center'}>
+            <div className={css ? css : 'container text-center'}>
+                <div
+                    style={{
+                        display: this.state.isReady ? 'none' : 'block',
+                    }}>
                     <div
-                        style={{
-                            display: this.state.isReady ? 'none' : 'block',
-                        }}>
-                        <div
-                            className={canvasCss ? canvasCss : ''}
-                            style={
-                                canvasCss
-                                    ? {}
-                                    : {
-                                          height: '1000px',
-                                          overflow: 'auto',
-                                      }
-                            }>
-                            {loader ? loader : <Loader />}
-                        </div>
-                    </div>
-                    <div
-                        style={{
-                            display: this.state.isReady ? 'block' : 'none',
-                        }}>
-                        {navbarOnTop ? (
-                            <div>
-                                <div>{nav}</div>
-                                <div onClick={onDocumentClick}>{pdf}</div>
-                            </div>
-                        ) : (
-                            <div>
-                                <div onClick={onDocumentClick}>{pdf}</div>
-                                <div>{nav}</div>
-                            </div>
-                        )}
+                        className={canvasCss ? canvasCss : ''}
+                        style={
+                            canvasCss
+                                ? {}
+                                : {
+                                      height: '1000px',
+                                      overflow: 'auto',
+                                  }
+                        }>
+                        {loader ? loader : <Loader />}
                     </div>
                 </div>
-            </>
+                <div
+                    style={{
+                        display: this.state.isReady ? 'block' : 'none',
+                    }}>
+                    {navbarOnTop ? (
+                        <div>
+                            <div>{nav}</div>
+                            <div onClick={onDocumentClick}>{pdf}</div>
+                        </div>
+                    ) : (
+                        <div>
+                            <div onClick={onDocumentClick}>{pdf}</div>
+                            <div>{nav}</div>
+                        </div>
+                    )}
+                </div>
+            </div>
         )
     }
 }
