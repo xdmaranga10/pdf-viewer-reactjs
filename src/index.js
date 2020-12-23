@@ -36,6 +36,7 @@ class PDFViewer extends React.Component {
         this.handleRotateRight = this.handleRotateRight.bind(this)
         this.handleHotkeysPressed = this.handleHotkeysPressed.bind(this)
         this.setThumbnails = this.setThumbnails.bind(this)
+        this.handleModalToggle = this.handleModalToggle.bind(this)
     }
 
     getPageCount(pages) {
