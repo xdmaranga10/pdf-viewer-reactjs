@@ -259,7 +259,6 @@ const RenderPdf = ({
             )
 
             setThumbnails(thumbnailList)
-            setParentThumbnails(parentThumbnailList)
         }
     }
 
@@ -293,6 +292,10 @@ const RenderPdf = ({
     useEffect(() => {
         scrollThumbnail()
     })
+
+    useEffect(() => {
+        setParentThumbnails([...thumbnails])
+    }, [thumbnails])
 
     if (error.status) {
         pageCount(-1)
@@ -348,10 +351,7 @@ const RenderPdf = ({
                         }}>
                         {thumbnails}
                     </div>
-                    <canvas
-                        ref={thumbnailRef}
-                        style={{ visibility: 'hidden', position: 'absolute' }}
-                    />
+                    <canvas ref={thumbnailRef} style={{ display: 'none' }} />
                 </>
             )
         } else {
