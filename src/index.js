@@ -304,7 +304,11 @@ class PDFViewer extends React.Component {
                         onClick={() => this.handleModalToggle(false)}>
                         Close
                     </button>
-                    <div>{this.state.thumbnails}</div>
+                    <div>
+                        {this.state.thumbnails.map((image, index) => (
+                            <img key={index} src={image} />
+                        ))}
+                    </div>
                 </Modal>
 
                 <div className={css ? css : 'container text-center'}>

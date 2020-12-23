@@ -211,6 +211,7 @@ const RenderPdf = ({
         if (Object.entries(showThumbnail).length !== 0) {
             // display thumbnails for all pages
             const thumbnailList = []
+            const parentThumbnailList = []
 
             for (let pageNo = 1; pageNo <= images.length; pageNo++) {
                 let image = images[pageNo - 1].image
@@ -245,6 +246,8 @@ const RenderPdf = ({
                         src={image}
                     />
                 )
+
+                parentThumbnailList.push(image)
             }
             // insert space at the end of all pages
             thumbnailList.push(
@@ -252,7 +255,7 @@ const RenderPdf = ({
             )
 
             setThumbnails(thumbnailList)
-            setParentThumbnails(thumbnailList)
+            setParentThumbnails(parentThumbnailList)
         }
     }
 
