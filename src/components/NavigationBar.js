@@ -36,13 +36,7 @@ const Navigation = ({
             className={`columns is-gapless ${css.navbarWrapper ||
                 'box is-mobile has-text-white has-background-black has-margin-top-15 has-margin-bottom-15'}`}>
             {hideZoom ? (
-                <div className='column is-2'>
-                    <button
-                        type='button'
-                        onClick={() => handleModalToggle(true)}>
-                        <i className='material-icons'>grid_on</i>
-                    </button>
-                </div>
+                <div className='column is-2'></div>
             ) : (
                 <div className='column is-2 buttons are-small has-addons'>
                     <ZoomOut

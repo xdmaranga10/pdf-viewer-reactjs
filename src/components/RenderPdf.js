@@ -214,7 +214,7 @@ const RenderPdf = ({
         if (Object.entries(showThumbnail).length !== 0) {
             // display thumbnails for all pages
             const thumbnailList = []
-            const parentThumbnailList = []
+            const modalThumbnails = []
 
             for (let pageNo = 1; pageNo <= images.length; pageNo++) {
                 let image = images[pageNo - 1].image
@@ -317,6 +317,12 @@ const RenderPdf = ({
         </Modal>
     )
 
+    const viewModalButton = (
+        <button type='button' onClick={() => setModalIsOpen(true)}>
+            <i className='material-icons'>grid_on</i>
+        </button>
+    )
+
     if (error.status) {
         pageCount(-1)
         return (
@@ -338,6 +344,7 @@ const RenderPdf = ({
             return (
                 <>
                     {modal}
+                    {viewModalButton}
                     <div
                         className={canvasCss ? canvasCss : ''}
                         style={
@@ -379,6 +386,7 @@ const RenderPdf = ({
             return (
                 <>
                     {modal}
+                    {viewModalButton}
                     <div
                         className={canvasCss ? canvasCss : ''}
                         style={
