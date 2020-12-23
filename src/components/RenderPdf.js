@@ -308,10 +308,9 @@ const RenderPdf = ({
                     style={{
                         background: 'gray',
                         border: 'none',
-                        borderRadius: '50px',
+                        borderRadius: '50%',
                         color: 'white',
                         cursor: 'pointer',
-                        fontSize: '24px',
                         outline: 'none',
                         padding: '8px 8px 5px',
                     }}>
@@ -342,6 +341,7 @@ const RenderPdf = ({
                                               border: '1px solid red',
                                               cursor: 'pointer',
                                               display: 'block',
+                                              width: '100%',
                                           }
                                         : {
                                               border: '1px solid black',
@@ -381,7 +381,7 @@ const RenderPdf = ({
                 left: '10px',
                 lineHeight: '0',
                 margin: '0 auto',
-                outline: 'none !important',
+                outline: 'none',
                 padding: '5px 10px',
                 position: 'absolute',
             }}>
