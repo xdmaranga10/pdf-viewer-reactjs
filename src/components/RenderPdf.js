@@ -337,7 +337,7 @@ const RenderPdf = ({
                                 style={
                                     isSelected
                                         ? {
-                                              border: '1px solid red',
+                                              border: '5px solid red',
                                               cursor: 'pointer',
                                               display: 'block',
                                               width: '100%',
