@@ -44,11 +44,11 @@
         "material-design-icons": ">=3.0.1"
     },
     "devDependencies": {
-        "@babel/core": "^7.14.6",
-        "@babel/plugin-transform-runtime": "^7.14.5",
-        "@babel/preset-env": "^7.14.7",
-        "@babel/preset-react": "^7.14.5",
-        "@babel/runtime": "^7.14.6",
+        "@babel/core": "^7.13.8",
+        "@babel/plugin-transform-runtime": "^7.13.9",
+        "@babel/preset-env": "^7.13.9",
+        "@babel/preset-react": "^7.12.13",
+        "@babel/runtime": "^7.13.9",
         "@rollup/plugin-babel": "^5.3.0",
         "eslint": "^6.8.0",
         "eslint-config-prettier": "^6.15.0",
@@ -63,7 +63,7 @@
         "rollup-plugin-terser": "^7.0.2"
     },
     "dependencies": {
-        "pdfjs-dist": "^2.7.570",
+        "pdfjs-dist": "^2.6.347",
         "prop-types": "^15.7.2",
         "react-modal": "^3.14.3"
     },
